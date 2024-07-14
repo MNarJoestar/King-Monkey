@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="esp"><!---->
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King monkey</title>
+    <style></style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+    <div class="img">
+      <img src="https://cdn-icons-png.flaticon.com/512/6236/6236335.png" alt="Mono de nieve">
+    </div>
+    <div class="bigdiv">
+      <div class="container">
+        <div class="porción">
+          <p>Inserte porcentaje <input type="number" id="porcentajeInput" placeholder="Ejm: 10%"></p>
+        </div>
+        <div class="total">
+          <!--Aqui se va a inserir el total de lo que se quiere calcular, o sea, el 10% de 100 por ejemplo-->
+          <p>Inserte entero <input type="number" id="enteroInput" placeholder="Ejem: 100"></p>
+        </div>
+      </div>
+
+      <div class="resultado">
+        <div class="results">
+          <p>El porcentaje es:<span id="resultadoPorcentaje"></span></p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="fundicion">
+        <div class="form">
+          <form action="list">
+            <label for="mat">Material elegido</label>
+            <select name="material" id="matls">
+              <option value="seleccionar">Selecciona un material</option>
+              <option value="hierro">Hierro</option>
+              <option value="acero">Acero</option>
+              <option value="cobre">Cobre</option>
+              <option value="cobalto">Cobalto</option>
+              <option value="estano">Estaño</option>
+              <option value="zinc">Zinc</option>
+              <option value="cadmio">Cadmio</option>
+              <option value="laton">Latón</option>
+              <option value="hielo">Hielo</option>
+              <option value="baterias">Baterias</option>
+              <option value="chisme">Chisme</option>
+              <option value="tulengua">Mi Lengua</option>
+            </select>
+          </form>
+          <div class="fusion">
+            <p>Punto de fundición: <span id="resultadoFundicion"></span></p>
+          </div>
+        </div>
+      </div>
+      <!--Se podrán añadir mas materiales cuando sea requerido-->
+      <hr>
+      <div class="ruletas">
+        <div class="roulete">
+          <div id="resultado">¡Haz clic para empezar!</div>
+        </div>
+        <div class="button">
+          <button onclick="empezarRuleta()">Empezar Ruleta</button>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+    <!---->
+
+
+
+  </body>
+
+</html>
