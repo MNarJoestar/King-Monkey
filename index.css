@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  min-height: 100vh;
+}
+.img{
+  display: flex;
+  justify-content:center;
+  width: 80px;
+  height: 80px;
+}
+p , label{
+  font-size: 1.8pc;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.inputs .porcion,
+.inputs .total {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.bigdiv{
+  border-radius: 0px;
+background: linear-gradient(315deg, #436d70, #395c5f);
+box-shadow:  -19px -19px 0px #19292a,
+             19px 19px 0px #65a3a8;
+}
+.container{
+ 
+  display: flex;
+  justify-content: center;
+  border-radius: 23px;
+background: #32358f;
+box-shadow: inset -19px -19px 0px #141539,
+            inset 19px 19px 0px #5055e5;
+}
+.resultado{
+  display: flex;
+  justify-content: center;
+}
+
+.fundicion {
+  text-align: center;
+  border-radius: 34px;
+background: #901d1d;
+box-shadow: inset -31px -31px 3px #781818,
+            inset 31px 31px 3px #a82222;
+            padding-bottom: 1px;
+}
+.form {
+  margin-bottom: 20px; /* Espacio entre el formulario y el resultado */
+  
+}
+/* Estilos adicionales para mejor apariencia */
+.form select {
+  margin-top: 10px; /* Espacio arriba del select */
+  width: 25%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.fusion {
+  margin-top: 20px; /* Espacio arriba del resultado */
+}
+.ruletas{
+  border-radius: 23px;
+background: #81328f;
+box-shadow: inset -19px -19px 0px #39093f8b,
+            inset 19px 19px 0px #bd50e5;
+}
+.roulete{
+  
+  display: flex;
+  justify-content: center;
+}
+button{
+  background-color: #32358f;
+  border: #5055e5;
+  border-style: dotted solid;
+}
+.button{
+  display: flex;
+  justify-content: center;
+}
+#resultado {
+        width: 300px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 24px;
+        border: 15px solid #eb00f3;
+    }
+    @media screen and (max-width: 600px) {
+  .inputs .porcion,
+  .inputs .total {
+    width: 100%;
+  }
