@@ -102,7 +102,7 @@ window.addEventListener('load', function(event) {
 
 //Ruleta 
 function empezarRuleta() {
-        var opciones = ['Musica ingles', 'Jugar', 'Jugar con musica', 'Ver Social media', 'Musica español'];
+        var opciones = ['Musica ingles', 'Jugar', 'Jugar con musica', 'Ver Social media', 'Musica español', 'Ver una serie', 'Cocinar', 'Estudiar', 'Leer un libro', 'Comer', 'Ver una Pelicula', 'Salir a pasear', 'Lo que Vicky diga'];
         var contador = 0;
         var intervalo = setInterval(function() {
             document.getElementById('resultado').innerText = opciones[Math.floor(Math.random() * opciones.length)];
@@ -114,3 +114,41 @@ function empezarRuleta() {
             }
         }, 100);  // Velocidad de actualización en milisegundos (más pequeño para más rápido)
     }
+
+    // calcular velocidad 
+   function calcularVelocidad() {
+    var tiempoInput = parseFloat(document.getElementById('tiempoInput').value);
+    var tiempoUnidad = document.getElementById('tiempoUnidad').value;
+    var distanciaInput = parseFloat(document.getElementById('distanciaInput').value);
+    var distanciaUnidad = document.getElementById('distanciaUnidad').value;
+
+    switch (tiempoUnidad) {
+        case 'minutos':
+            tiempoInput *= 60;
+            break;
+        case 'horas':
+            tiempoInput *= 3600;
+            break;
+    }
+
+    switch (distanciaUnidad) {
+        case 'centimetros':
+            distanciaInput /= 100;
+            break;
+        case 'kilometros':
+            distanciaInput *= 1000;
+            break;
+    }
+
+    var velocidad = distanciaInput / tiempoInput;
+    var mensaje = '';
+
+    if (velocidad > 50) {
+        mensaje = 'Ni Flash se atrevió a tanto!';
+    } else if (velocidad < 5) {
+        mensaje = 'Te vas a matar prro!';
+    }
+
+    document.getElementById('resultadoVelocidad').textContent = velocidad.toFixed(2) + ' m/s';
+    document.getElementById('mensajeResultado').textContent = mensaje;
+}
