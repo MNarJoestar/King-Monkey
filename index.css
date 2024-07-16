@@ -4,12 +4,15 @@ body {
   padding: 0;
   align-items: center;
   min-height: 100vh;
+  background-color: #000000;
 }
 .img{
   display: flex;
   justify-content:center;
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
+  padding-left:47%;
+  padding-right: 50%; 
 }
 p , label{
   font-size: 1.8pc;
@@ -80,7 +83,7 @@ box-shadow: inset -19px -19px 0px #39093f8b,
   display: flex;
   justify-content: center;
 }
-button{
+.rouletequiz{
   background-color: #32358f;
   border: #5055e5;
   border-style: dotted solid;
@@ -88,7 +91,47 @@ button{
 .button{
   display: flex;
   justify-content: center;
+  
 }
+.velocidad{
+  text-align: center;
+  border-radius: 34px;
+background: #32358f;
+box-shadow: inset -19px -19px 0px #141539,
+            inset 19px 19px 0px #5055e5;
+}
+.vel-inputs{
+  display: flex;
+  justify-content: center;
+}
+  .speed{
+    background-color: #65a3a8;
+    border: #65a3a8;
+    padding: 10px 5px 10px 5px;
+    align-items: center;
+  }
+  .speedbut{
+    display: flex;
+    justify-content: center;
+  }
+  .results{
+    display: flex;
+    justify-content: center ;
+  }
+ @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(1220deg); }
+}
+
+#rotatingImage {
+  margin-top: 10px;
+  margin-bottom: 80px;
+    animation: rotate 1s linear infinite; /* 3s de giro + 2s de pausa = 5s por ciclo */
+    animation-delay: 3s; /* Pausa inicial de 2s antes de comenzar la animación */
+    animation-duration: 2s;
+}
+
+  
 #resultado {
         width: 300px;
         height: 50px;
@@ -102,3 +145,5 @@ button{
   .inputs .total {
     width: 100%;
   }
+
+
