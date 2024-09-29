@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletos para pagar</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+<style>
+body {
+    background-color: rgb(220, 136, 11);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.img{
+  display: flex;
+  justify-content:center;
+  width: 5rem;
+  height: 5rem;
+  padding-left:47%;
+  padding-right: 50%; 
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: orange;
+    border: 5px solid brown;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+.link{
+display: flex;
+  justify-content:center;
+}
+
+.Salario-total, .Restante, .Boletos, .Extra {
+    background-color: rgb(255, 120, 2);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+.Salario-total h2, .Restante h2, .Boletos h2, .Extra h2 {
+    font-family: sans-serif;
+    margin: 10px 0;
+}
+
+.Salario-total .input-btn, .Restante .input-btn, .Boletos .input-btn, .Extra .input-btn {
+    display: flex;
+    align-items: center;
+}
+
+.input-btn input[type="number"], .input-btn input[type="text"], .input-btn button {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.input-btn input[type="number"], .input-btn input[type="text"] {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    margin-right: 10px;
+}
+
+.Buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+animation: fade-in 1s ease-out infinite alternate;
+}
+
+@keyframes fade-in{
+  from{
+    opacity: 0;
+    transform: traslateY(30px);
+  } to {
+    opacity: 1;
+    transform: traslateY(0px);
+  }
+}
+
+.Buttons button {
+    width: 30%;
+    font-size: 18px;
+    background-color: #0000f8;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+h3 {
+    font-family: sans-serif;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 17px;
+    color: #000009;
+    margin-top: 20px;
+}
+
+/* Estilos adicionales para responsividad */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .Buttons button {
+        width: 40%;
+        font-size: 16px;
+    }
+}
+
+/* Estilos para los títulos y colores del banco Mercantil */
+h2, h3 {
+    color: #0707cf;
+}
+
+body {
+    background-color: #0c0875; /* Naranja */
+}
+
+.container {
+    background-color: #0000f8; /* Azul */
+    border-color: #f6f2ee; /* Naranja */
+}
+
+</style>
+
+  </head>
+  <body>
+<div class="img">
+      <img src="https://cdn-icons-png.flaticon.com/512/6236/6236335.png" alt="Mono de nieve">
+    </div>
+    <div class="container">
+<p><a href="./king-monkey.html" class="link">Volver a King-monkey</a></p>
+
+      <div class="Salario-total">
+        <h3>Saldo actual: <span id="saldoActual">0</span></h3>
+        <h3>Deuda total: <span id="deudaTotal">0</span></h3>
+        <input type="number" id="salarioActual" placeholder="Salario actual">
+        <button onclick="agregarSalario()">Agregar Salario</button>
+      </div>
+      <div class="Restante">
+        <h2>Saldo restante: <span id="saldoRestante">0</span></h2>
+        <h2>Deuda restante: <span id="deudaRestante">0</span></h2>
+      </div>
+      <nav class="Boletos">
+        <h2>Lista de facturas pendientes:</h2>
+        <ul id="facturasPendientes"></ul>
+        <input type="text" id="nuevaFactura" placeholder="Nombre de la factura">
+        <input type="number" id="valorFactura" placeholder="Valor">
+        <button onclick="agregarNuevaFactura()">Agregar</button>
+      </nav>
+      <nav class="Boletos">
+        <h2>Lista de facturas pagas:</h2>
+        <ul id="facturasPagas"></ul>
+      </nav>
+      <nav class="Extra">
+        <h3>Gastos extra:</h3>
+        <input type="text" id="nuevoGasto" placeholder="Nombre del gasto">
+        <input type="number" id="valorGasto" placeholder="Valor">
+        <button onclick="agregarGastoExtra()">Agregar Gasto</button>
+        <ul id="gastosExtra"></ul>
+      </nav>
+    </div>
+
+    <div class="Buttons">
+      <button onclick="limpiarDatos()">Limpiar</button>
+      <button onclick="exportarExcel()">Exportar para Excel</button>
+    </div>
+
+
+
+    <footer>
+      <legend>Made by: Mario Ñarvares</legend>
+    </footer>
+
+    <script>
+      let saldoActual = 0;
+      let deudaTotal = 0;
+      let saldoRestante = 0; // Variable para el saldo restante
+      let deudaRestante = 0; // Variable para la deuda restante
+      let facturasPendientes = [];
+      let facturasPagas = [];
+      let gastosExtra = [];
+
+      function agregarSalario() {
+        let salario = parseFloat(document.getElementById('salarioActual').value);
+        saldoActual += salario;
+        document.getElementById('saldoActual').textContent = saldoActual.toFixed(2);
+        actualizarSaldoRestante();
+      }
+
+      function actualizarSaldoRestante() {
+        saldoRestante = saldoActual - calcularTotalFacturasPagas() - calcularTotalGastosExtra();
+        document.getElementById('saldoRestante').textContent = saldoRestante.toFixed(2);
+      }
+
+      function agregarNuevaFactura() {
+        let nombreFactura = document.getElementById('nuevaFactura').value;
+        let valorFactura = parseFloat(document.getElementById('valorFactura').value);
+
+        if (isNaN(valorFactura) || valorFactura <= 0) {
+          alert("Por favor ingrese un valor válido para la factura.");
+          return;
+        }
+
+        facturasPendientes.push({
+          nombre: nombreFactura,
+          valor: valorFactura
+        });
+
+        // Actualizar la lista de facturas pendientes
+        actualizarListaFacturasPendientes();
+
+        // Actualizar la deuda total
+        deudaTotal += valorFactura;
+        document.getElementById('deudaTotal').textContent = deudaTotal.toFixed(2);
+
+        // Actualizar la deuda restante
+        deudaRestante += valorFactura; // Se incrementa la deuda restante
+        document.getElementById('deudaRestante').textContent = deudaRestante.toFixed(2);
+
+        // Limpiar los campos de entrada
+        document.getElementById('nuevaFactura').value = '';
+        document.getElementById('valorFactura').value = '';
+      }
+
+      function actualizarListaFacturasPendientes() {
+        let listaFacturasPendientes = document.getElementById('facturasPendientes');
+        listaFacturasPendientes.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos elementos
+
+        facturasPendientes.forEach((factura, index) => {
+          let li = document.createElement('li');
+          li.textContent = `${factura.nombre}: $${factura.valor.toFixed(2)}`;
+
+          let button = document.createElement('button');
+          button.textContent = 'Pagar';
+          button.addEventListener('click', function() {
+            pagarFactura(index);
+          });
+
+          li.appendChild(button);
+          listaFacturasPendientes.appendChild(li);
+        });
+      }
+
+      function pagarFactura(index) {
+        let facturaPaga = facturasPendientes.splice(index, 1)[0];
+        facturasPagas.push(facturaPaga);
+
+        // Actualizar las listas
+        actualizarListaFacturasPendientes();
+        actualizarListaFacturasPagas();
+
+        // Actualizar la deuda total (no se modifica)
+
+        // Actualizar la deuda restante
+        deudaRestante -= facturaPaga.valor;
+        document.getElementById('deudaRestante').textContent = deudaRestante.toFixed(2);
+
+        // Actualizar el saldo restante después de pagar la factura
+        actualizarSaldoRestante();
+      }
+
+      function actualizarListaFacturasPagas() {
+        let listaFacturasPagas = document.getElementById('facturasPagas');
+        listaFacturasPagas.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos elementos
+
+        facturasPagas.forEach((factura, index) => {
+          let li = document.createElement('li');
+          li.textContent = `${factura.nombre}: $${factura.valor.toFixed(2)}`;
+          listaFacturasPagas.appendChild(li);
+        });
+      }
+
+      function actualizarDeudaTotal() {
+        deudaTotal = facturasPendientes.reduce((total, factura) => total + factura.valor, 0);
+        document.getElementById('deudaTotal').textContent = deudaTotal.toFixed(2);
+      }
+
+      function calcularTotalFacturasPagas() {
+        return facturasPagas.reduce((total, factura) => total + factura.valor, 0);
+      }
+
+      function agregarGastoExtra() {
+        let nombreGasto = document.getElementById('nuevoGasto').value;
+        let valorGasto = parseFloat(document.getElementById('valorGasto').value);
+
+        if (isNaN(valorGasto) || valorGasto <= 0) {
+          alert("Por favor ingrese un valor válido para el gasto extra.");
+          return;
+        }
+
+        gastosExtra.push({
+          nombre: nombreGasto,
+          valor: valorGasto
+        });
+
+        // Actualizar la lista de gastos extra
+        actualizarListaGastosExtra();
+
+        // Actualizar el saldo restante
+        actualizarSaldoRestante();
+
+        // Limpiar los campos de entrada
+        document.getElementById('nuevoGasto').value = '';
+        document.getElementById('valorGasto').value = '';
+      }
+
+      function actualizarListaGastosExtra() {
+        let listaGastosExtra = document.getElementById('gastosExtra');
+        listaGastosExtra.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos elementos
+
+        gastosExtra.forEach((gasto, index) => {
+          let li = document.createElement('li');
+          li.textContent = `${gasto.nombre}: $${gasto.valor.toFixed(2)}`;
+          listaGastosExtra.appendChild(li);
+        });
+      }
+
+      function calcularTotalGastosExtra() {
+        return gastosExtra.reduce((total, gasto) => total + gasto.valor, 0);
+      }
+
+      // fase de exportación para excel
+
+      function exportarExcel() {
+        // Crear un objeto de datos para exportar
+        let data = {
+          saldoActual: saldoActual.toFixed(2),
+          deudaTotal: deudaTotal.toFixed(2),
+          saldoRestante: saldoRestante.toFixed(2),
+          deudaRestante: deudaRestante.toFixed(2),
+          facturasPendientes: facturasPendientes.map(factura => ({
+            nombre: factura.nombre,
+            valor: factura.valor.toFixed(2)
+          })),
+          facturasPagas: facturasPagas.map(factura => ({
+            nombre: factura.nombre,
+            valor: factura.valor.toFixed(2)
+          })),
+          gastosExtra: gastosExtra.map(gasto => ({
+            nombre: gasto.nombre,
+            valor: gasto.valor.toFixed(2)
+          }))
+        };
+
+        // Convertir los datos a formato JSON
+        let jsonData = JSON.stringify(data);
+
+        // Crear un elemento <a> temporal para descargar el archivo
+        let a = document.createElement('a');
+        a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonData);
+        a.download = 'datos_boletos.json';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+
+      // Al cargar la página, intentamos recuperar los datos del localStorage
+      window.onload = function() {
+        if (localStorage.getItem('Datos_gastos')) {
+          let savedData = JSON.parse(localStorage.getItem('Datos_gastos'));
+          saldoActual = savedData.saldoActual;
+          deudaTotal = savedData.deudaTotal;
+          saldoRestante = savedData.saldoRestante;
+          deudaRestante = savedData.deudaRestante;
+          facturasPendientes = savedData.facturasPendientes;
+          facturasPagas = savedData.facturasPagas;
+          gastosExtra = savedData.gastosExtra;
+
+          // Actualizar la interfaz
+          actualizarUI();
+        }
+      };
+
+      // Función para actualizar la interfaz de usuario después de limpiar los datos
+      function actualizarUI() {
+        // Actualizar el HTML para los saldos
+        document.getElementById('saldoActual').textContent = saldoActual.toFixed(2);
+        document.getElementById('deudaTotal').textContent = deudaTotal.toFixed(2);
+        document.getElementById('saldoRestante').textContent = saldoRestante.toFixed(2);
+        document.getElementById('deudaRestante').textContent = deudaRestante.toFixed(2);
+
+        // Actualizar listas visuales
+        actualizarListaFacturasPendientes();
+        actualizarListaFacturasPagas();
+        actualizarListaGastosExtra();
+      }
+
+      // Función para limpiar todos los datos
+      function limpiarDatos() {
+        saldoActual = 0;
+        deudaTotal = 0;
+        saldoRestante = 0;
+        deudaRestante = 0;
+        facturasPendientes = [];
+        facturasPagas = [];
+        gastosExtra = [];
+
+        actualizarUI();
+        guardarDatos(); // Guardar los datos limpios en localStorage
+      }
+
+      // Al cargar la página, intentamos recuperar los datos del localStorage
+      window.onload = function() {
+        if (localStorage.getItem('Datos_gastos')) {
+          let savedData = JSON.parse(localStorage.getItem('Datos_gastos'));
+          saldoActual = savedData.saldoActual;
+          deudaTotal = savedData.deudaTotal;
+          saldoRestante = savedData.saldoRestante;
+          deudaRestante = savedData.deudaRestante;
+          facturasPendientes = savedData.facturasPendientes;
+          facturasPagas = savedData.facturasPagas;
+          gastosExtra = savedData.gastosExtra;
+
+          // Actualizar la interfaz
+          actualizarUI();
+        }
+      };
+
+      // Función para guardar los datos en localStorage
+      function guardarDatos() {
+        let data = {
+          saldoActual: saldoActual,
+          deudaTotal: deudaTotal,
+          saldoRestante: saldoRestante,
+          deudaRestante: deudaRestante,
+          facturasPendientes: facturasPendientes,
+          facturasPagas: facturasPagas,
+          gastosExtra: gastosExtra
+        };
+
+        localStorage.setItem('Datos_gastos', JSON.stringify(data)); // Usa la misma clave aquí
+      }
+
+      // Evento para guardar automáticamente los datos al cerrar la página
+      window.onbeforeunload = function() {
+        guardarDatos();
+      };
+    </script>
+
+
+
+
+
+  </body>
+
+</html>

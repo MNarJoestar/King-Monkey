@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Se cambió 'esp' por 'es' según el estándar ISO 639-1 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>King monkey</title>
+  <link rel="stylesheet" href="./index.css"> <!-- Se eliminó un duplicado innecesario de este link -->
+  <script type="text/javascript" src="./index.js" defer></script> <!-- Se eliminó un duplicado innecesario de este script -->
+  <style> /* Aquí puedes añadir estilos si es necesario */ 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000000;
+}
+.img{
+  display: flex;
+  justify-content:center;
+  width: 5rem;
+  height: 5rem;
+  padding-left:47%;
+  padding-right: 50%; 
+}
+p , label{
+  font-size: 1.8pc;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.link{
+display: flex;
+justify-content: center;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.inputs .porcion,
+.inputs .total {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.bigdiv{
+  border-radius: 0px;
+background: linear-gradient(315deg, #436d70, #395c5f);
+box-shadow:  -19px -19px 0px #19292a,
+             19px 19px 0px #65a3a8;
+}
+.container{
+ 
+  display: flex;
+  justify-content: center;
+  border-radius: 23px;
+background: #32358f;
+box-shadow: inset -19px -19px 0px #141539,
+            inset 19px 19px 0px #5055e5;
+}
+.resultado{
+  display: flex;
+  justify-content: center;
+}
+
+.fundicion {
+  text-align: center;
+  border-radius: 34px;
+background: #901d1d;
+box-shadow: inset -31px -31px 3px #781818,
+            inset 31px 31px 3px #a82222;
+            padding-bottom: 1px;
+}
+.form {
+  margin-bottom: 20px; /* Espacio entre el formulario y el resultado */
+  
+}
+/* Estilos adicionales para mejor apariencia */
+.form select {
+  margin-top: 10px; /* Espacio arriba del select */
+  width: 25%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.fusion {
+  margin-top: 20px; /* Espacio arriba del resultado */
+}
+.ruletas{
+  border-radius: 23px;
+background: #81328f;
+box-shadow: inset -19px -19px 0px #39093f8b,
+            inset 19px 19px 0px #bd50e5;
+}
+.roulete{
+  
+  display: flex;
+  justify-content: center;
+}
+.rouletequiz{
+  background-color: #32358f;
+  border: #5055e5;
+  border-style: dotted solid;
+}
+.button{
+  display: flex;
+  justify-content: center;
+  animation: fade-in 2s ease-out infinite alternate;
+}
+
+@keyframes fade-in{
+  from{
+    opacity: 0;
+    transform: traslateY(30px);
+  } to {
+    opacity: 1;
+    transform: traslateY(0px);
+  }
+}
+
+.velocidad{
+  text-align: center;
+  border-radius: 34px;
+background: #32358f;
+box-shadow: inset -19px -19px 0px #141539,
+            inset 19px 19px 0px #5055e5;
+}
+.vel-inputs{
+  display: flex;
+  justify-content: center;
+}
+  .speed{
+    background-color: #65a3a8;
+    border: #65a3a8;
+    padding: 10px 5px 10px 5px;
+    align-items: center;
+  }
+  .speedbut{
+    display: flex;
+    justify-content: center;
+  }
+  .results{
+    display: flex;
+    justify-content: center ;
+  }
+ @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(1220deg); }
+}
+
+#rotatingImage {
+  margin-top: 10px;
+  margin-bottom: 80px;
+    animation: rotate 1s linear infinite; /* 3s de giro + 2s de pausa = 5s por ciclo */
+    animation-delay: 3s; /* Pausa inicial de 2s antes de comenzar la animación */
+    animation-duration: 2s;
+}
+
+  
+#resultado {
+        width: 300px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 24px;
+        border: 15px solid #eb00f3;
+    }
+    @media screen and (max-width: 600px) {
+  .inputs .porcion,
+  .inputs .total {
+    width: 100%;
+  }
+
+
+
+</style>
+</head>
+
+<body>
+
+  <div class="img">
+    <img src="https://cdn-icons-png.flaticon.com/512/6236/6236335.png" alt="Mono de nieve">
+  </div>
+  <div class="bigdiv">
+<p><a href="./payments.html" class="link">Payments</a></p>
+<p><a href="./shoppinglist.html" class="link">Lista de compras</a></p>
+
+    <div class="container">
+      <div class="porción">
+        <p>Inserte porcentaje <input type="number" id="porcentajeInput" placeholder="Ej: 10%"></p>
+      </div>
+      <div class="total">
+        <!-- Aquí se va a insertar el total de lo que se quiere calcular, por ejemplo, el 10% de 100 -->
+        <p>Inserte entero <input type="number" id="enteroInput" placeholder="Ej: 100"></p>
+      </div>
+    </div>
+
+    <div class="resultado">
+      <div class="results">
+        <p>El porcentaje es: <span id="resultadoPorcentaje"></span></p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="fundicion">
+      <div class="form">
+        <form action="list">
+          <label for="mat">Material elegido</label>
+          <select name="material" id="matls">
+            <option value="seleccionar">Selecciona un material</option>
+            <option value="hierro">Hierro</option>
+            <option value="acero">Acero</option>
+            <option value="cobre">Cobre</option>
+            <option value="cobalto">Cobalto</option>
+            <option value="estano">Estaño</option>
+            <option value="zinc">Zinc</option>
+            <option value="cadmio">Cadmio</option>
+            <option value="laton">Latón</option>
+            <option value="hielo">Hielo</option>
+            <option value="baterias">Baterias</option>
+            <option value="chisme">Chisme</option>
+            <option value="tulengua">Mi Lengua</option>
+          </select>
+        </form>
+        <div class="fusion">
+              <!-- Se podrán añadir nuevos elementos cuando sea necesario -->
+          <p>Punto de fundición: <span id="resultadoFundicion"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="ruletas">
+      <div class="roulete">
+        <div id="resultado">¡Haz clic para empezar!</div>
+      </div>
+      <div class="button">
+        <button class="rouletequiz" onclick="empezarRuleta()">Empezar Ruleta</button>
+      </div>
+    </div>
+
+ <!-- Comentario cerrado al final del div con clase 'bigdiv' -->
+    <hr>
+   <!-- Nueva sección para calcular velocidad -->
+    <div class="velocidad">
+    
+    <p class="results">Speeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed</p>
+   <img id="rotatingImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl0gK5f0kb34vDCymvqqUA0AC9CkYssJNjTw&s">
+
+    <div class="vel-inputs">
+        <div>
+            <label for="tiempo">Tiempo:</label>
+            <input type="number" id="tiempoInput" placeholder="Valor">
+            <select id="tiempoUnidad">
+                <option value="segundos">Segundos</option>
+                <option value="minutos">Minutos</option>
+                <option value="horas">Horas</option>
+            </select>
+        </div>
+        <div>
+            <label for="distancia">Distancia:</label>
+            <input type="number" id="distanciaInput" placeholder="Valor">
+            <select id="distanciaUnidad">
+                <option value="centimetros">Centímetros</option>
+                <option value="metros">Metros</option>
+                <option value="kilometros">Kilómetros</option>
+            </select>
+        </div>
+    </div>
+    <div class="speedbut">
+        <button class="speed" onclick="calcularVelocidad()">Calcular Velocidad</button>
+    </div>
+    <p class="results">La velocidad es: <span id="resultadoVelocidad"></span></p>
+    <p id="mensajeResultado"></p>
+</div>
+<hr>
+
+</body>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+  const porcentajeInput = document.getElementById('porcentajeInput');
+  const enteroInput = document.getElementById('enteroInput');
+  const resultadoPorcentaje = document.getElementById('resultadoPorcentaje');
+
+  porcentajeInput.addEventListener('input', calcularPorcentaje);
+  enteroInput.addEventListener('input', calcularPorcentaje);
+
+  function calcularPorcentaje() {
+    const porcentaje = parseFloat(porcentajeInput.value);
+    const entero = parseFloat(enteroInput.value);
+
+    if (!isNaN(porcentaje) && !isNaN(entero)) {
+      const resultado = (porcentaje / 100) * entero;
+      resultadoPorcentaje.textContent = resultado.toFixed(2); // Mostrar el resultado con dos decimales
+    } else {
+      resultadoPorcentaje.textContent = ''; // Si alguno de los campos no es un número válido, se borra el resultado
+    }
+  }
+});
+
+// codigo para los puntos de fundicion
+
+// Obtener el elemento select
+const selectMaterial = document.getElementById('matls');
+
+// Obtener el elemento span donde mostraremos el resultado
+const resultadoFundicion = document.getElementById('resultadoFundicion');
+
+// Asociar un evento de cambio al select
+selectMaterial.addEventListener('change', function() {
+    // Obtener el valor seleccionado
+    const materialSeleccionado = selectMaterial.value;
+
+    // Definir el punto de fusión para cada material en Celsius
+    let puntoDeFusion = '';
+    switch (materialSeleccionado) {
+        case 'seleccionar':
+            puntoDeFusion = 'Elige un material';
+            break;
+        case 'hierro':
+            puntoDeFusion = '1538 °C';
+            break;
+        case 'acero':
+            puntoDeFusion = '1400-1530 °C';
+            break;
+        case 'cobre':
+            puntoDeFusion = '1083 °C';
+            break;
+        case 'cobalto':
+            puntoDeFusion = '1495 °C';
+            break;
+        case 'estano':
+            puntoDeFusion = '231.9 °C';
+            break;
+        case 'zinc':
+            puntoDeFusion = '419.5 °C';
+            break;
+        case 'cadmio':
+            puntoDeFusion = '321.1 °C';
+            break;
+        case 'laton':
+            puntoDeFusion = '900-940 °C';
+            break;
+            case 'hielo':
+            puntoDeFusion = 'Quien diablos funde hielo?';
+            break;
+            case 'baterias':
+            puntoDeFusion = 'No lo recomiendo';
+            break;
+            case 'chisme':
+            puntoDeFusion = 'Depende qué tan bueno es';
+            break;
+            case 'tulengua':
+            puntoDeFusion = 'Mira chisme de nuevo';
+            break;
+        default:
+            puntoDeFusion = 'No especificado';
+    }
+
+    // Mostrar el resultado en el span
+    resultadoFundicion.textContent = `${puntoDeFusion}`;
+});
+// guardar
+window.addEventListener('beforeunload', function(event) {
+    // Obtener el contenido que deseas guardar (por ejemplo, el texto de un elemento)
+    var contenido = document.getElementById('contenido').innerHTML;
+
+    // Guardar el contenido en el almacenamiento local del navegador
+    localStorage.setItem('contenidoGuardado', contenido);
+});
+window.addEventListener('load', function(event) {
+    // Obtener el contenido guardado desde el almacenamiento local
+    var contenidoGuardado = localStorage.getItem('contenidoGuardado');
+
+    // Restaurar el contenido en la página
+    if (contenidoGuardado) {
+        document.getElementById('contenido').innerHTML = contenidoGuardado;
+    }
+});
+
+//Ruleta 
+function empezarRuleta() {
+        var opciones = ['Musica ingles', 'Jugar', 'Jugar con musica', 'Ver Social media', 'Musica español', 'Ver una serie', 'Cocinar', 'Estudiar', 'Leer un libro', 'Comer', 'Ver una Pelicula', 'Salir a pasear', 'Lo que Vicky diga'];
+        var contador = 0;
+        var intervalo = setInterval(function() {
+            document.getElementById('resultado').innerText = opciones[Math.floor(Math.random() * opciones.length)];
+            contador++;
+            if (contador > 30) {  // Cambia 30 por el número de iteraciones que desees
+                clearInterval(intervalo);
+                var opcionFinal = opciones[Math.floor(Math.random() * opciones.length)];
+                document.getElementById('resultado').innerText = opcionFinal;
+            }
+        }, 100);  // Velocidad de actualización en milisegundos (más pequeño para más rápido)
+    }
+
+    // calcular velocidad 
+   function calcularVelocidad() {
+    var tiempoInput = parseFloat(document.getElementById('tiempoInput').value);
+    var tiempoUnidad = document.getElementById('tiempoUnidad').value;
+    var distanciaInput = parseFloat(document.getElementById('distanciaInput').value);
+    var distanciaUnidad = document.getElementById('distanciaUnidad').value;
+
+    switch (tiempoUnidad) {
+        case 'minutos':
+            tiempoInput *= 60;
+            break;
+        case 'horas':
+            tiempoInput *= 3600;
+            break;
+    }
+
+    switch (distanciaUnidad) {
+        case 'centimetros':
+            distanciaInput /= 100;
+            break;
+        case 'kilometros':
+            distanciaInput *= 1000;
+            break;
+    }
+
+    var velocidad = distanciaInput / tiempoInput;
+    var mensaje = '';
+
+    if (velocidad > 50) {
+        mensaje = 'Ni Flash se atrevió a tanto!';
+    } else if (velocidad < 5) {
+        mensaje = 'Te vas a matar prro!';
+    }
+
+    document.getElementById('resultadoVelocidad').textContent = velocidad.toFixed(2) + ' m/s';
+    document.getElementById('mensajeResultado').textContent = mensaje;
+}
+</script>
+
+</html>
